@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 	<display-name>WF</display-name>
-    <distributable />
-    
-    
+	<distributable />
+
+
 	<context-param>
 		<description>Vaadin production mode</description>
 		<param-name>productionMode</param-name>
@@ -22,13 +22,28 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-	
-	
- 	
+	<!-- DBConnectionPool init -->
+	<listener>
+		<listener-class>com.cq.wf.web.utils.listener.DBConPoolInitListener</listener-class>
+	</listener>
+
+
 	<filter>
 		<filter-name>WFFilter</filter-name>
 		<filter-class>com.cq.wf.web.utils.filter.WFFilter</filter-class>
-	</filter> 
+		<init-param>
+			<param-name>struts.convention.action.package</param-name>
+			<param-value>com.cq.wf.web.actions</param-value>
+		</init-param>
+		<init-param>
+			<param-name>struts.devMode</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>struts.convention.classes.reload</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
 
 	<filter-mapping>
 		<filter-name>WFFilter</filter-name>
@@ -42,7 +57,7 @@
 	<filter-mapping>
 		<filter-name>UIFilter</filter-name>
 		<url-pattern>/admin/*</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>
 	<servlet>
 		<servlet-name>Vaadin Application Servlet</servlet-name>
 		<servlet-class>org.activiti.explorer.servlet.ExplorerApplicationServlet</servlet-class>
@@ -83,9 +98,9 @@
 	<session-config>
 		<session-timeout>480</session-timeout>
 	</session-config>
-  
+
 	<welcome-file-list>
-	    <welcome-file>/jsp/index.jsp</welcome-file>
+		<welcome-file>/jsp/index.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>
