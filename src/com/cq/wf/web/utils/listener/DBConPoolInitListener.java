@@ -1,14 +1,19 @@
 package com.cq.wf.web.utils.listener;
 
+import java.io.Reader;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.logicalcobwebs.proxool.ProxoolFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.cq.wf.web.utils.DBUtils;
 
 public class DBConPoolInitListener implements ServletContextListener {
     private static Logger log = LoggerFactory
@@ -42,6 +47,9 @@ public class DBConPoolInitListener implements ServletContextListener {
             String url = "proxool." + alias + ":" + driverClass + ":"
                     + driverUrl;
             ProxoolFacade.registerConnectionPool(url, info);
+            
+            Reader reader = Resources.getResourceAsReader("mybatis.xml");
+            DBUtils.setSqlSF(new SqlSessionFactoryBuilder().build(reader));
             log.info("DBConnectionPool init end");
         } catch (Exception e) {
 

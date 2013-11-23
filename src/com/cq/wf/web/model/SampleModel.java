@@ -1,11 +1,15 @@
 package com.cq.wf.web.model;
 
+import java.util.Date;
+
 import com.cq.wf.web.base.model.WFBaseModel;
 
 public class SampleModel extends WFBaseModel {
     
-    private String userId;
+   
+	private String userId;
     private String email;
+    private Date testDate;
     /**
      * @return the userId
      */
@@ -31,4 +35,10 @@ public class SampleModel extends WFBaseModel {
         this.email = email;
     }
 
+    public Date getTestDate() {
+		return testDate;
+	}
+	public void setTestDate(Date testDate) {
+		this.testDate = testDate;
+	}
 }
