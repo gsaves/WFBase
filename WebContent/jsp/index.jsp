@@ -6,6 +6,6 @@
 	<head>
 	</head>
 	<body>
-		<p><a href="<s:url action='sample'/>">sample</a></p>
+		<p><a href="<s:url action='sample' />">sample</a></p>
 	</body>
 </html>
