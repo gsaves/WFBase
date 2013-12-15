@@ -2,21 +2,23 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="include/header.jsp" />
 <html>
 	<head>
 	<SCRIPT type="text/javascript">
-	function getDetail(){
-		
+	function getDetail(ProcessInstanceId){
+		document.getElementsByName("sampleModel.id")[0].value = ProcessInstanceId;
+		document.forms[0].submit();
 	}
 	</SCRIPT>
 	</head>
 	<body>
-	<s:form action="sampleSearch">
+	<s:form action="sampleDetail">
 	<table>
 		<tr>
 			<td>
 			<s:select name="sampleModel.userId" list="sampleModel.usrList" listKey="id" listValue="name"></s:select>
-			<s:submit value="search task"></s:submit>
+			<s:submit value="search task" action="sampleSearch"></s:submit>
 			<s:textarea name="sampleModel.content"></s:textarea>
 			<s:textarea name="sampleModel.comment"></s:textarea>
 			<s:submit value="draft a task by fozzie" action="draft"></s:submit>
@@ -31,7 +33,7 @@
 					<s:property value="createTime" />
 				</td>
 				<td>
-					<A href="javascript: document.gete<s:property value='id' />"><s:property value="name" /></A>
+					<A href="javascript: getDetail(<s:property value='processInstanceId' />);"><s:property value="name" /></A>
 				</td>
 				<td>
 					<s:property value="assignee" />
@@ -43,7 +45,7 @@
 		</tr>
 	</table>
 	
-	<s:hidden name="sampleModel.taskId"></s:hidden>
+	<s:hidden name="sampleModel.id"></s:hidden>
 	</s:form>
 	</body>
 </html>

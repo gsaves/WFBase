@@ -8,6 +8,8 @@ public interface SampleDao {
 
 	public List<SampleModel> getUserList();
 	
-//	public SampleModel getUserByName();
+	public int sampleInsert(SampleModel model);
+	
+	public SampleModel getDetail(SampleModel model);
 	
 }

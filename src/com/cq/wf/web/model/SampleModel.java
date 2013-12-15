@@ -19,6 +19,7 @@ public class SampleModel extends WFBaseModel {
     private List<HashMap<String, String>> usrList;
     private List<Task> tskList;
     private String taskId;
+    private String id;
     /**
      * @return the userId
      */
@@ -110,4 +111,10 @@ public class SampleModel extends WFBaseModel {
     public void setTaskId(String taskId) {
         this.taskId = taskId;
     }
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 }

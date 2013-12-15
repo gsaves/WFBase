@@ -6,7 +6,7 @@
 	<head>
 	</head>
 	<body>
-	<s:form action="sample">
+	<s:form action="sampleSearch">
 	<table>
 		<tr>
 			<td>
@@ -21,7 +21,7 @@
 		</tr>
 	</table>
 	
-	
+	<s:hidden name="sampleModel.userId"></s:hidden>
 	</s:form>
 	</body>
 </html>
